@@ -1,63 +1,88 @@
-# 🛡️ Cyber-Attack Simulation & Network Defense Engine v2.0
+<div align="center">
 
-A fully interactive, Object-Oriented C++ simulation engine that models cyberattacks on a computer network using core Data Structure algorithms.
+# 🛡️ Cyber-Attack Simulation & Network Defense Engine
+### *Algorithmic Malware Propagation & Dynamic Active Defense Simulator in C++*
 
-Built as a **3rd Semester PBL (Project-Based Learning)** assignment combining **Data Structures** and **C++ OOP**.
+[![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.cppreference.com/w/cpp/17)
+[![Algorithms](https://img.shields.io/badge/Algorithms-BFS%20%7C%20Dijkstra-E34F26?style=for-the-badge&logo=codenewbie&logoColor=white)](https://github.com/Zishan3909/cyber-attack-simulation)
+[![Architecture](https://img.shields.io/badge/Design-OOP%20Polymorphism-4EAA25?style=for-the-badge)](https://github.com/Zishan3909/cyber-attack-simulation)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://github.com/Zishan3909/cyber-attack-simulation/pulls)
+
+<br />
+
+<img src="https://raw.githubusercontent.com/Zishan3909/cyber-attack-simulation/main/docs/banner.gif" alt="Project Banner" width="100%" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80'" />
+
+<p align="center">
+  <b>Simulate real-time cyber threats across custom network topologies, analyze propagation physics with Graph Theory, and execute zero-trust quarantine defenses.</b>
+</p>
+
+</div>
 
 ---
 
-## 🎯 Overview
+## 📌 Executive Summary
 
-This project simulates a computer network as a **weighted graph** and lets the user launch two types of cyberattacks against it, then defend using a quarantine system:
+Modern enterprise infrastructure faces attacks ranging from autonomous, indiscriminate lateral movement to surgical, high-priority penetrations. The **Cyber-Attack Simulation & Network Defense Engine** models network routing infrastructure as a weighted directed graph to simulate and analyze these threat behaviors. 
 
-| Attack Type | Algorithm Used | Behavior |
-|---|---|---|
-| **Worm** | Breadth-First Search (BFS) | Spreads indiscriminately to all reachable neighbors, layer by layer |
-| **Targeted Trojan** | Dijkstra's Algorithm | Finds and follows the fastest/cheapest route to a specific target server |
+By applying fundamental data structures (**Queues, Min-Heaps, Adjacency Lists**) alongside **C++ Object-Oriented Design**, the engine demonstrates both malware propagation mechanics and active defense mitigation via edge-severing isolation protocols.
 
-## 🧠 Key Features
+---
 
-- **OOP Architecture** — Abstract `Malware` base class with `Worm` and `TargetedTrojan` derived classes (Inheritance, Polymorphism, Encapsulation, Abstraction)
-- **Graph (Adjacency List)** — Network stored as `unordered_map<int, vector<NetworkConnection>>`
-- **Security Clearance System** — Each node has a clearance level (L1–L5); malware is blocked if its level is insufficient
-- **Quarantine Defense** — Dynamically sever all connections to/from a router to isolate it from the attack
-- **CSV Topology Loader** — Load the network dynamically from `network_topology.csv` using `ifstream`
-- **After-Action Report** — Export detailed attack history and network status to a `.txt` file
-- **ANSI Color-Coded Terminal** — Red (compromised), Green (secured), Yellow (quarantined)
-- **Interactive Menu Loop** — Full command-center UI driven by `std::cin`
+## ✨ Features
+
+- 🐛 **Autonomous Worm Contagion (BFS):** Simulates self-replicating worms spreading outward to all directly connected neighboring routers layer by layer using a FIFO queue.
+- 🎯 **Targeted Trojan Infiltration (Dijkstra):** Identifies and exploits the fastest, lowest-latency path through the subnet using a Min-Heap priority queue to strike high-value assets.
+- 🔒 **Role-Based Clearance Controls:** Each node implements security clearance levels ($L1 \rightarrow L5$); attacks stall when node defenses outmatch malware sophistication.
+- ⚡ **Dynamic Quarantine Protocol:** Real-time active defense triggers isolate compromised assets by severing incident edges ($Weight \rightarrow \infty$) without halting the entire grid.
+- 📂 **Dynamic CSV Topology Parser:** Ingests external network maps (`network_topology.csv`) on startup for flexible architectural evaluations without code recompilation.
+- 📝 **Automated After-Action Forensics (AAR):** Automatically exports timeline analytics, compromised nodes, and defense logs to an external `after_action_report.txt`.
+- 🎨 **ANSI Terminal UI:** Interactive, color-coded CLI status monitoring (Green = Secured, Red = Compromised, Yellow = Quarantined).
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Language:** C++17
-- **Libraries:** `<vector>`, `<queue>`, `<unordered_map>`, `<fstream>`, `<memory>` (smart pointers)
-- **Build:** `g++ -std=c++17 -o sim.exe main.cpp`
-- **Platform:** Windows / Linux / macOS (any standard C++17 compiler)
+| Domain | Technologies / Concepts |
+| :--- | :--- |
+| **Language** | C++17 |
+| **Data Structures** | Graph (Adjacency List), Queue (`std::queue`), Priority Queue (`std::priority_queue`), Hash Maps (`std::unordered_map`) |
+| **OOP Architecture** | Abstract Base Classes, Virtual Functions, Polymorphic Dispatch, Encapsulation, RAII |
+| **Memory & I/O** | Smart Pointers (`std::unique_ptr`), File Streams (`std::ifstream`, `std::ofstream`) |
+| **Styling** | ANSI Escape Sequences |
 
-## 📁 Files
+---
 
-| File | Purpose |
-|---|---|
-| `main.cpp` | Complete simulation engine (~570 lines) |
-| `network_topology.csv` | Editable network configuration (loaded at startup) |
+## 🚀 Quick Start / Installation
 
-## 🚀 How to Run
+### Prerequisites
+- Modern C++17 compiler (`g++`, `clang++`, or MSVC)
+- CMake 3.15+ (optional) or native CLI tools
+
+### Build & Run
 
 ```bash
-# Compile
-g++ -std=c++17 -o sim.exe main.cpp
+# 1. Clone the repository
+git clone https://github.com/Zishan3909/cyber-attack-simulation.git
+cd cyber-attack-simulation
 
-# Run
+# 2. Compile with C++17 standards
+g++ -std=c++17 -O3 -o sim.exe main.cpp
+
+# 3. Launch the Command Center
 ./sim.exe
 ```
 
-The interactive menu will launch:
+---
 
-```
+## 📸 Terminal Output & Workflow
+
+```text
   ============= COMMAND CENTER =============
   1. View Network Status
   2. View Network Topology (Connections)
-  3. Launch Worm Attack      (BFS)
-  4. Launch Targeted Trojan   (Dijkstra)
+  3. Launch Worm Attack        (BFS)
+  4. Launch Targeted Trojan     (Dijkstra)
   5. Quarantine a Router
   6. Restore a Quarantined Router
   7. Export After-Action Report
@@ -65,38 +90,18 @@ The interactive menu will launch:
   0. Exit
 ```
 
-## 📊 Data Structures Used
-
-| Data Structure | STL Container | Purpose |
-|---|---|---|
-| Graph (Adjacency List) | `unordered_map<int, vector<>>` | Stores the entire network topology |
-| Queue | `std::queue<int>` | BFS traversal (FIFO order) |
-| Priority Queue (Min-Heap) | `std::priority_queue` with `greater<>` | Dijkstra's — always expands cheapest path first |
-| Hash Map | `unordered_map<int, int>` | Shortest distances and visited states |
-
-## 🧬 OOP Concepts Demonstrated
-
-| Concept | Implementation |
-|---|---|
-| **Encapsulation** | `NetworkNode` — private fields with public getters/setters |
-| **Abstraction** | `Malware` — abstract base class with `execute() = 0` (pure virtual) |
-| **Inheritance** | `Worm` and `TargetedTrojan` inherit from `Malware` |
-| **Polymorphism** | `engine.launchAttack(malware)` calls the correct `execute()` at runtime |
-
-## 📝 Sample Output
-
-```
---- MALWARE OUTBREAK DETECTED AT ROUTER 1 ---
-[!] Patient Zero: Router 1 (Gateway-Router)
-[+] Router 2 (Firewall-Alpha) DEFENDED. (Security L3 > Worm L2)
-[!] Spread: Router 1 -> Router 3 (Web-Server)
-[+] Router 4 (Database-Server) DEFENDED. (Security L4 > Worm L2)
-
-[RESULT] 2 node(s) compromised, 2 node(s) defended.
-```
+<div align="center">
+  <img src="https://via.placeholder.com/800x400/0d1117/38bdf8?text=Terminal+Execution+and+Forensic+Log+View" alt="Terminal Output Preview" width="85%" />
+</div>
 
 ---
 
 ## ⚖️ License
 
-Part of the [Zishan Ali Project Repository](https://github.com/Zishan3909/Project). All rights reserved.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+
+---
+
+<div align="center">
+  <sub>Engineered by <a href="https://github.com/Zishan3909">Zishan Ali</a></sub>
+</div>
