@@ -46,8 +46,9 @@ namespace Color {
 //  PHASE 1: OOP ARCHITECTURE
 // ============================================================
 
-// --- NetworkNode Class ---
-// Encapsulates a single computer/router in the simulated network.
+// === KASHISH RAWAT'S CODE : OOP NODE ARCHITECTURE ===
+// Role: Encapsulates the state, security clearance, and properties of 
+// each individual computer/router in the simulated network.
 class NetworkNode {
 private:
     int id;
@@ -84,8 +85,9 @@ public:
     }
 };
 
-// --- NetworkConnection Struct ---
-// Represents a single directed edge (network link) between two routers.
+// === ZISHAN ALI'S CODE : GRAPH ADJACENCY LIST STRUCTURE ===
+// Role: Represents a directed edge (connection) between nodes, 
+// holding the latency cost needed for the pathfinding algorithms.
 struct NetworkConnection {
     int targetRouterId;
     int baseCost;          // Original latency / traversal cost
@@ -113,6 +115,9 @@ struct AttackResult {
 //  Demonstrates: Abstraction, Inheritance, Polymorphism
 // ============================================================
 
+// === KASHISH RAWAT'S CODE : POLYMORPHISM & INHERITANCE ===
+// Role: Provides a base template for all viruses. Enforces that any 
+// derived malware class must implement its own execute() method.
 class Malware {
 protected:
     string name;
@@ -160,6 +165,9 @@ public:
         result.originNode  = startNode;
         result.targetNode  = -1; // Worms target everything
 
+        // === ZISHAN ALI'S CODE : BREADTH-FIRST SEARCH (BFS) ENGINE ===
+        // Role: Uses a standard Queue to simulate a virus spreading blindly 
+        // outward, hitting all immediate neighbors before moving deeper.
         queue<int> spreadQueue;
         unordered_map<int, bool> visited;
 
@@ -321,7 +329,9 @@ public:
         cout << Color::CYAN << "  [i] Entry: Router " << startNode
              << " | Target: Router " << targetNode << Color::RESET << "\n";
 
-        // --- DIJKSTRA'S ALGORITHM ---
+        // === ZISHAN ALI'S CODE : DIJKSTRA'S ALGORITHM ENGINE ===
+        // Role: Uses a Min-Heap (priority_queue) to calculate the absolute 
+        // lowest latency (fastest) attack path across weighted graph edges.
         unordered_map<int, int> fastestTime;
         unordered_map<int, int> previousNode; // For path reconstruction
 
@@ -478,8 +488,9 @@ public:
     //  PHASE 2: FILE I/O
     // =========================================================
 
-    // Loads the network graph dynamically from a CSV file
-    // instead of hardcoding topology in main().
+    // === SHUBHAM SINGH'S CODE : CSV TOPOLOGY PARSER ===
+    // Role: Handles <fstream> File I/O to dynamically parse and construct 
+    // the graph topology from an external .csv file.
     bool loadTopologyFromCSV(const string& filename) {
         ifstream file(filename);
         if (!file.is_open()) {
@@ -525,7 +536,9 @@ public:
         return true;
     }
 
-    // Exports a detailed After-Action Report to a .txt file
+    // === SHUBHAM SINGH'S CODE : AFTER-ACTION REPORT EXPORTER ===
+    // Role: Writes the results of all completed attack simulations to a 
+    // timestamped .txt file to fulfill the Phase 2 reporting requirement.
     void exportAfterActionReport(const string& filename) const {
         ofstream file(filename);
         if (!file.is_open()) {
@@ -674,10 +687,11 @@ public:
 
     // =========================================================
     //  QUARANTINE DEFENSE SYSTEM
-    //  Severs ALL connections to/from a node by setting their
-    //  edge weights to effectively infinity (quarantine flag).
     // =========================================================
 
+    // === KASHISH'S CODE : DYNAMIC QUARANTINE MANAGER ===
+    // Role: Allows the UI to defend the network by dynamically severing 
+    // all graph connections (edges) to and from a targeted node in real-time.
     void quarantineNode(int nodeId) {
         if (!nodeExists(nodeId)) {
             cout << Color::RED << "  [ERROR] Router " << nodeId
@@ -777,10 +791,11 @@ public:
 
 // ============================================================
 //  PHASE 3: INTERACTIVE ENGINE LOOP
-//  The main() function provides a command-center menu using
-//  std::cin so the user can drive the entire simulation.
 // ============================================================
 
+// === KASHISH'S CODE : COMMAND CENTER UI ===
+// Role: The main frontend loop handling switch statements, managing 
+// secure input sanitation, and linking user commands to the backend Engine.
 int main() {
     // Enable ANSI escape code support on Windows 10+
 #ifdef _WIN32
@@ -798,7 +813,7 @@ int main() {
     cout << Color::CYAN << Color::BOLD;
     cout << "\n  +====================================================+\n";
     cout << "  |  CYBER-ATTACK SIMULATION & NETWORK DEFENSE v2.0    |\n";
-    cout << "  |              3rd Semester PBL Project               |\n";
+    cout << "  |              3rd Semester PBL Project              |\n";
     cout << "  +====================================================+\n";
     cout << Color::RESET << "\n";
 
